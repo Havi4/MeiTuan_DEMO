@@ -11,7 +11,7 @@ class Merchant extends React.Component {
     render(){
         return (
             <View>
-
+                <Text>上架</Text>
             </View>
         );
     }

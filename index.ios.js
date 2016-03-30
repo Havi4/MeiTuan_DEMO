@@ -7,10 +7,8 @@ import React, {
     AppRegistry,
     Component,
     StyleSheet,
-    Text,
-    View,
+    Navigator,
     Image,
-    TabBarIOS,
 } from 'react-native';
 
 import TabNavigator from 'react-native-tab-navigator';
@@ -79,17 +77,48 @@ class MeiTuan_DEMO extends Component {
     _renderSubViews(){
         switch (this.state.selectedTab){
             case SelectTab.Home:{
-                return (<Home/>);
+                return (
+                    <Navigator
+                        style={styles.container}
+                        initialRoute={{component:Home}}
+                        renderScene={(route,navigator)=>{
+                            return <route.component navigator={navigator} {...route} {...route.passProps}/>
+                        }}
+                    />);
+                //这里的{...route.passProps}会把passProps中的所有的键值对以属性的方式展开.
+                //renderScene是用渲染最上层的route中的组件.route={component:home,name:....}
             }
             case SelectTab.Merchant:{
-                return (<Merchant/>);
+                return (
+                    <Navigator
+                        style={styles.container}
+                        initialRoute={{component:Merchant}}
+                        renderScene={(route,navigator)=>{
+                        return <route.component navigator={navigator} {...route} {...route.passProps}/>
+                        }}
+                    />);
             }
             case SelectTab.Mine:{
-                return (<Mine/>);
-
+                return (
+                    <Navigator
+                        style={styles.container}
+                        initialRoute={{component:Mine}}
+                        renderScene={(route,navigator)=>{
+                        return <route.component navigator={navigator} {...route} {...route.passProps}/>
+                        }}
+                    />
+                );
             }
             case SelectTab.Misc:{
-                return (<Misc/>);
+                return (
+                    <Navigator
+                        style={styles.container}
+                        initialRoute={{component:Misc}}
+                        renderScene={(route,navigator)=>{
+                        return <route.component navigator={navigator} {...route} {...route.passProps}/>
+                        }}
+                    />
+                );
             }
         }
     }
