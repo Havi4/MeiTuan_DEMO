@@ -7,12 +7,13 @@ import React, {
 } from 'react-native';
 
 import NavigationBar from 'react-native-navigationbar';
+import BaseCSS from '../css/BaseCss';
 
 class Merchant extends React.Component {
 
     render(){
         return (
-            <View>
+            <View style={BaseCSS.container}>
                 <NavigationBar
                     backHidden={true}
                     barTintColor="white"

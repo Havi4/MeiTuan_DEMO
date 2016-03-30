@@ -7,12 +7,13 @@ import React, {
 } from 'react-native';
 
 import NavigationBar from 'react-native-navigationbar';
+import BaseCSS from '../css/BaseCss';
 
 class Mine extends React.Component {
 
     render(){
         return (
-            <View style={styles.container}>
+            <View style={BaseCSS.container}>
                 <NavigationBar
                     backHidden={true}
                     barTintColor="white"
@@ -26,9 +27,7 @@ class Mine extends React.Component {
 }
 
 let styles = StyleSheet.create({
-    container:{
-        flex:1
-    }
+
 });
 
 export default Mine;
