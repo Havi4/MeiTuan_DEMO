@@ -6,18 +6,27 @@ import React, {
 
 } from 'react-native';
 
+import NavigationBar from 'react-native-navigationbar';
+
 class Merchant extends React.Component {
 
     render(){
         return (
             <View>
-                <Text>上架</Text>
+                <NavigationBar
+                    backHidden={true}
+                    barTintColor="white"
+                    barStyle={styles.navBar}
+                    title="商家"
+                />
             </View>
         );
     }
 
 }
 
-let styles = StyleSheet.create({});
+let styles = StyleSheet.create({
+    
+});
 
 export default Merchant;

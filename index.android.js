@@ -80,8 +80,7 @@ class MeiTuan_DEMO extends Component {
             case SelectTab.Home:{
                 return (
                     <Navigator
-                        style={styles.container}
-                        initialRoute={{component:Home}}
+                        initialRoute={{component:Home,title:'首页'}}
                         renderScene={(route,navigator)=>{
                             return <route.component navigator={navigator} {...route} {...route.passProps}/>
                         }}
@@ -92,7 +91,6 @@ class MeiTuan_DEMO extends Component {
             case SelectTab.Merchant:{
                 return (
                     <Navigator
-                        style={styles.container}
                         initialRoute={{component:Merchant}}
                         renderScene={(route,navigator)=>{
                         return <route.component navigator={navigator} {...route} {...route.passProps}/>
@@ -102,19 +100,16 @@ class MeiTuan_DEMO extends Component {
             case SelectTab.Mine:{
                 return (
                     <Navigator
-                        style={styles.container}
                         initialRoute={{component:Mine}}
                         renderScene={(route,navigator)=>{
                         return <route.component navigator={navigator} {...route} {...route.passProps}/>
                         }}
                     />
                 );
-
             }
             case SelectTab.Misc:{
                 return (
                     <Navigator
-                        style={styles.container}
                         initialRoute={{component:Misc}}
                         renderScene={(route,navigator)=>{
                         return <route.component navigator={navigator} {...route} {...route.passProps}/>
@@ -134,8 +129,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5FCFF',
     },
     tabBarImage:{
-        height:25,
-        width:25
+        height:30,
+        width:30
     }
 });
 

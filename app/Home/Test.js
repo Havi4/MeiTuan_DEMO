@@ -3,16 +3,14 @@ import React, {
     StyleSheet,
     View,
     Text,
-    TouchableHighlight,
+
 } from 'react-native';
 
 import NavigationBar from 'react-native-navigationbar';
 import BaseCSS from '../css/BaseCss';
-import Test from './Test';
 
-class Home extends React.Component {
+class WebPage extends React.Component {
 
-    // 构造
     constructor(props) {
         super(props);
         // 初始状态
@@ -29,10 +27,6 @@ class Home extends React.Component {
                     barStyle={styles.navBar}
                     title="首页"
                 />
-                <TouchableHighlight onPress={this._next}
-                >
-                    <Text>你好</Text>
-                </TouchableHighlight>
             </View>
         );
     }
@@ -45,8 +39,6 @@ class Home extends React.Component {
 
 }
 
-let styles = StyleSheet.create({
-    
-});
+let styles = StyleSheet.create({});
 
-export default Home;
+export default WebPage;

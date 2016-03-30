@@ -39,6 +39,8 @@ class MeiTuan_DEMO extends Component {
         return (
             <TabNavigator>
                 <TabNavigator.Item
+                    titleStyle={{color:'#999999'}}
+                    selectedTitleStyle={{color:'#36b9af'}}
                     selected={this.state.selectedTab === 'home'}
                     title="首页"
                     renderIcon={() => <Image source={require('./app/images/icon_tabbar_home.png')} style={styles.tabBarImage}/>}
@@ -47,6 +49,8 @@ class MeiTuan_DEMO extends Component {
                     {this._renderSubViews()}
                 </TabNavigator.Item>
                 <TabNavigator.Item
+                    titleStyle={{color:'#999999'}}
+                    selectedTitleStyle={{color:'#36b9af'}}
                     selected={this.state.selectedTab === 'merchant'}
                     title="商家"
                     renderIcon={() => <Image source={require('./app/images/icon_tabbar_merchant_normal.png')} style={styles.tabBarImage}/>}
@@ -55,6 +59,8 @@ class MeiTuan_DEMO extends Component {
                     {this._renderSubViews()}
                 </TabNavigator.Item>
                 <TabNavigator.Item
+                    titleStyle={{color:'#999999'}}
+                    selectedTitleStyle={{color:'#36b9af'}}
                     selected={this.state.selectedTab === 'mine'}
                     title="我的"
                     renderIcon={() => <Image source={require('./app/images/icon_tabbar_mine.png')} style={styles.tabBarImage}/>}
@@ -63,6 +69,8 @@ class MeiTuan_DEMO extends Component {
                     {this._renderSubViews()}
                 </TabNavigator.Item>
                 <TabNavigator.Item
+                    titleStyle={{color:'#999999'}}
+                    selectedTitleStyle={{color:'#36b9af'}}
                     selected={this.state.selectedTab === 'misc'}
                     title="更多"
                     renderIcon={() => <Image source={require('./app/images/icon_tabbar_misc.png')} style={styles.tabBarImage}/>}
@@ -79,8 +87,7 @@ class MeiTuan_DEMO extends Component {
             case SelectTab.Home:{
                 return (
                     <Navigator
-                        style={styles.container}
-                        initialRoute={{component:Home}}
+                        initialRoute={{component:Home,title:'首页'}}
                         renderScene={(route,navigator)=>{
                             return <route.component navigator={navigator} {...route} {...route.passProps}/>
                         }}
@@ -91,7 +98,6 @@ class MeiTuan_DEMO extends Component {
             case SelectTab.Merchant:{
                 return (
                     <Navigator
-                        style={styles.container}
                         initialRoute={{component:Merchant}}
                         renderScene={(route,navigator)=>{
                         return <route.component navigator={navigator} {...route} {...route.passProps}/>
@@ -101,7 +107,6 @@ class MeiTuan_DEMO extends Component {
             case SelectTab.Mine:{
                 return (
                     <Navigator
-                        style={styles.container}
                         initialRoute={{component:Mine}}
                         renderScene={(route,navigator)=>{
                         return <route.component navigator={navigator} {...route} {...route.passProps}/>
@@ -112,7 +117,6 @@ class MeiTuan_DEMO extends Component {
             case SelectTab.Misc:{
                 return (
                     <Navigator
-                        style={styles.container}
                         initialRoute={{component:Misc}}
                         renderScene={(route,navigator)=>{
                         return <route.component navigator={navigator} {...route} {...route.passProps}/>
@@ -132,8 +136,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5FCFF',
     },
     tabBarImage:{
-        height:25,
-        width:25
+        height:30,
+        width:30
     }
 });
 
