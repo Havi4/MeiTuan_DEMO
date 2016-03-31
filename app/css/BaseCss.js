@@ -6,6 +6,7 @@ import React, {
 let styles = StyleSheet.create({
     container:{
         flex:1,
+        backgroundColor:'#f4f4f4'
     }
 });
 
