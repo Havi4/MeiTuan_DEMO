@@ -76,16 +76,46 @@ class LimitTime extends React.Component {
                             style={styles.activityAre_discount_bg}
                             source={require('../images/discount_num_bg.png')}
                             resizeMode={Image.resizeMode.stretch}
-                        >
-                        </Image>
+                        />
+                        <Text style={{marginLeft:-33,backgroundColor:'#ffedd9',color:'#ff7e16',textAlign:'center',height:18}}>
+                            再减{this.state.timeData===null? '':this.state.timeData.data[0].resource.activityArea.deals.value-this.state.timeData.data[0].resource.activityArea.deals.price}{' '}
+                        </Text>
                     </View>
                 </View>
                 <View style={[{flex:1}]}>
-                    <View style={[{flex:1,borderBottomWidth:0.5,borderBottomColor:'#d8d8d8'}]}>
-
+                    <View style={{flex:1,borderBottomWidth:0.5,borderBottomColor:'#d8d8d8',flexDirection:'row'}}>
+                        <View style={{flexDirection:'column',flex:1}}>
+                            <Text style={[styles.activityAre_right_main_title,{color:this.state.timeData===null? '#dddddd':this.state.timeData.data[0].resource.topicArea[0].maintitleColor}]}>
+                                {this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[0].mainTitle}
+                            </Text>
+                            <Text style={{color:'#666666',fontSize:11,marginLeft:15,marginTop:5}}>
+                                {this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[0].deputyTitle}
+                            </Text>
+                        </View>
+                        <View style={{flex:1,justifyContent:'center'}}>
+                            <Image
+                                style={{height:40,width:80,alignSelf:'center'}}
+                                source={{uri:this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[0].entranceImgUrl}}
+                                resizeMode={Image.resizeMode.stretch}
+                            />
+                        </View>
                     </View>
-                    <View style={[{flex:1}]}>
-
+                    <View style={{flex:1,flexDirection:'row'}}>
+                        <View style={{flexDirection:'column',flex:1}}>
+                            <Text style={[styles.activityAre_right_main_title,{color:this.state.timeData===null? '#dddddd':this.state.timeData.data[0].resource.topicArea[0].maintitleColor}]}>
+                                {this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[1].mainTitle}
+                            </Text>
+                            <Text style={{color:'#666666',fontSize:11,marginLeft:15,marginTop:5}}>
+                                {this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[1].deputyTitle}
+                            </Text>
+                        </View>
+                        <View style={{flex:1,justifyContent:'center'}}>
+                            <Image
+                                style={{height:40,width:80,alignSelf:'center'}}
+                                source={{uri:this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[1].entranceImgUrl}}
+                                resizeMode={Image.resizeMode.stretch}
+                            />
+                        </View>
                     </View>
                 </View>
             </View>
@@ -146,7 +176,7 @@ let styles = StyleSheet.create({
     activityArea_subTitle:{
         marginTop:5,
         width:120,
-        height:20,
+        height:18,
         alignSelf:'center',
         color:'#747474',
         fontSize:17,
@@ -154,10 +184,22 @@ let styles = StyleSheet.create({
 
     },
     activityAre_discount_bg:{
-        marginLeft:5,
-        height:20,
+        marginLeft:-5,
+        height:18,
         width:50,
+    },
+    activityAre_right_main_title:{
+        marginTop:18,
+        fontSize:17,
+        fontWeight:'500',
+        marginLeft:15
+    },
+    activityAre_right_sub_title:{
+
+    },
+    activityAre_right_image: {
+
     }
-    
+
 });
 export default LimitTime;
