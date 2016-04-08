@@ -42,11 +42,11 @@ class Recomend extends React.Component {
 
                         </View>
                         <View style={{flex:1.2,marginRight:20}}>
-                            <Text style={{flex:1,fontSize:11,color:this.state.rowData.color.subTitle,lineHeight:16}}>
+                            <Text style={{flex:1,fontSize:11,color:this.state.rowData.color.subTitle}}>
                                 {this.state.rowData.subTitle}
                             </Text>
                         </View>
-                        <View style={{flex:1,flexDirection:'row',marginTop:10,marginRight:10,alignItems:'center',justifyContent:'space-between'}}>
+                        <View style={{flex:1,flexDirection:'row',marginTop:5,marginRight:10,alignItems:'center',justifyContent:'space-between'}}>
                             <View style={{flexDirection:'row',alignItems:'center'}}>
                                 <Text style={{color:this.state.rowData.color.mainMessage,fontWeight:'400',fontSize:15}}>
                                     {this.state.rowData.mainMessage}{this.state.rowData.mainMessage2}
