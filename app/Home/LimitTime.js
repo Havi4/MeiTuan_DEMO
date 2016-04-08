@@ -4,6 +4,7 @@ import React, {
     View,
     Text,
     Image,
+    TouchableOpacity,
 } from 'react-native';
 
 const timelimit_url = 'http://api.meituan.com/api/entry?uuid=088C82665074950B02152378305A6939BC11B996257658B48A8C3999C8904F22&name=brandarea&utm_term=6.6&utm_source=AppStore&latlng=31.222292%2C%20121.409874&utm_content=088C82665074950B02152378305A6939BC11B996257658B48A8C3999C8904F22&userid=157535075&utm_medium=iphone&movieBundleVersion=100&version_name=6.6&__skck=3c0cf64e4b039997339ed8fec4cddf05&__skua=7c48d372d4cf12e70c996b8b2afacea0&__skts=1459998611.026719&utm_campaign=AgroupBgroupD100H0&__skno=9BB9BBE6-E6A4-48A5-BE7E-D49AD6B3A136&__skcy=74Di2XRkcBBjg4Mdhi39jE042b8%3D&ci=10&__vhost=aop.meituan.com&msid=48E40C05-691C-4595-8F0F-99A44D0CDD212016-04-07-10-25569';
@@ -46,77 +47,86 @@ class LimitTime extends React.Component {
         return (
             <View style={styles.bgContainer}>
                 <View style={[{flex:1,borderRightWidth:0.5,borderRightColor:'#d8d8d8',flexDirection:'column'}]}>
-                    <Image
-                        style={[styles.activityArea_image]}
-                        source={{uri:this.getImage(activityImgUrl)}}
-                        resizeMode={Image.resizeMode.stretch}
-                    />
-                    <View style={styles.activityArea_deadLine_bg}>
-                        <Text style={{fontSize:10,marginLeft:5,color:'#666666'}}>距离结束</Text>
-                        <View style={{height:13,width:0.5,backgroundColor:'#d8d8d8',marginLeft:5}}/>
-                        <Text style={styles.activityArea_deadLine_text}>05</Text>
-                        <Text style={[styles.activityArea_deadLine_text,{color:'#d8d8d8'}]}>:</Text>
-                        <Text style={styles.activityArea_deadLine_text}>05</Text>
-                        <Text style={[styles.activityArea_deadLine_text,{color:'#d8d8d8'}]}>:</Text>
-                        <Text style={styles.activityArea_deadLine_text}>05</Text>
-                    </View>
-                    <Image
-                        style={[styles.activityArea_subImage]}
-                        source={{uri:this.getImage(mdcLogoUrl)}}
-                        resizeMode={Image.resizeMode.stretch}
-                    />
-                    <Text style={styles.activityArea_subTitle}>
-                        {this.state.timeData===null? '':this.state.timeData.data[0].resource.activityArea.deals.brandname}
-                    </Text>
-                    <View style={{marginTop:5,flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                        <Text style={{fontSize:17,color:'#06c1ae'}}>
-                            ￥{this.state.timeData===null? '':this.state.timeData.data[0].resource.activityArea.deals.value}
-                        </Text>
+                    <TouchableOpacity activeOpacity={0.5}>
                         <Image
-                            style={styles.activityAre_discount_bg}
-                            source={require('../images/discount_num_bg.png')}
+                            style={[styles.activityArea_image]}
+                            source={{uri:this.getImage(activityImgUrl)}}
                             resizeMode={Image.resizeMode.stretch}
                         />
-                        <Text style={{marginLeft:-33,backgroundColor:'#ffedd9',color:'#ff7e16',textAlign:'center',height:18}}>
-                            再减{this.state.timeData===null? '':this.state.timeData.data[0].resource.activityArea.deals.value-this.state.timeData.data[0].resource.activityArea.deals.price}{' '}
+                        <View style={styles.activityArea_deadLine_bg}>
+                            <Text style={{fontSize:10,marginLeft:5,color:'#666666'}}>距离结束</Text>
+                            <View style={{height:13,width:0.5,backgroundColor:'#d8d8d8',marginLeft:5}}/>
+                            <Text style={styles.activityArea_deadLine_text}>05</Text>
+                            <Text style={[styles.activityArea_deadLine_text,{color:'#d8d8d8'}]}>:</Text>
+                            <Text style={styles.activityArea_deadLine_text}>05</Text>
+                            <Text style={[styles.activityArea_deadLine_text,{color:'#d8d8d8'}]}>:</Text>
+                            <Text style={styles.activityArea_deadLine_text}>05</Text>
+                        </View>
+                        <Image
+                            style={[styles.activityArea_subImage]}
+                            source={{uri:this.getImage(mdcLogoUrl)}}
+                            resizeMode={Image.resizeMode.stretch}
+                        />
+                        <Text style={styles.activityArea_subTitle}>
+                            {this.state.timeData===null? '':this.state.timeData.data[0].resource.activityArea.deals.brandname}
                         </Text>
-                    </View>
+                        <View style={{marginTop:5,flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
+                            <Text style={{fontSize:17,color:'#06c1ae'}}>
+                                ￥{this.state.timeData===null? '':this.state.timeData.data[0].resource.activityArea.deals.value}
+                            </Text>
+                            <Image
+                                style={styles.activityAre_discount_bg}
+                                source={require('../images/discount_num_bg.png')}
+                                resizeMode={Image.resizeMode.stretch}
+                            />
+                            <Text style={{marginLeft:-33,backgroundColor:'#ffedd9',color:'#ff7e16',textAlign:'center',height:18}}>
+                                再减{parseInt(this.state.timeData===null? '':this.state.timeData.data[0].resource.activityArea.deals.value-this.state.timeData.data[0].resource.activityArea.deals.price)}{' '}
+                            </Text>
+                        </View>
+                    </TouchableOpacity>
+
                 </View>
                 <View style={[{flex:1}]}>
-                    <View style={{flex:1,borderBottomWidth:0.5,borderBottomColor:'#d8d8d8',flexDirection:'row'}}>
-                        <View style={{flexDirection:'column',flex:1}}>
-                            <Text style={[styles.activityAre_right_main_title,{color:this.state.timeData===null? '#dddddd':this.state.timeData.data[0].resource.topicArea[0].maintitleColor}]}>
-                                {this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[0].mainTitle}
-                            </Text>
-                            <Text style={{color:'#666666',fontSize:11,marginLeft:15,marginTop:5}}>
-                                {this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[0].deputyTitle}
-                            </Text>
+                    <TouchableOpacity activeOpacity={0.5} style={{flex:1}}>
+                        <View style={{flex:1,borderBottomWidth:0.5,borderBottomColor:'#d8d8d8',flexDirection:'row'}}>
+                            <View style={{flexDirection:'column',flex:1}}>
+                                <Text style={[styles.activityAre_right_main_title,{color:this.state.timeData===null? '#dddddd':this.state.timeData.data[0].resource.topicArea[0].maintitleColor}]}>
+                                    {this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[0].mainTitle}
+                                </Text>
+                                <Text style={{color:'#666666',fontSize:11,marginLeft:15,marginTop:5}}>
+                                    {this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[0].deputyTitle}
+                                </Text>
+                            </View>
+                            <View style={{flex:1,justifyContent:'center'}}>
+                                <Image
+                                    style={{height:40,width:80,alignSelf:'center'}}
+                                    source={{uri:this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[0].entranceImgUrl}}
+                                    resizeMode={Image.resizeMode.stretch}
+                                />
+                            </View>
                         </View>
-                        <View style={{flex:1,justifyContent:'center'}}>
-                            <Image
-                                style={{height:40,width:80,alignSelf:'center'}}
-                                source={{uri:this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[0].entranceImgUrl}}
-                                resizeMode={Image.resizeMode.stretch}
-                            />
+                    </TouchableOpacity>
+
+                    <TouchableOpacity activeOpacity={0.5} style={{flex:1}}>
+                        <View style={{flex:1,flexDirection:'row'}}>
+                            <View style={{flexDirection:'column',flex:1}}>
+                                <Text style={[styles.activityAre_right_main_title,{color:this.state.timeData===null? '#dddddd':this.state.timeData.data[0].resource.topicArea[0].maintitleColor}]}>
+                                    {this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[1].mainTitle}
+                                </Text>
+                                <Text style={{color:'#666666',fontSize:11,marginLeft:15,marginTop:5}}>
+                                    {this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[1].deputyTitle}
+                                </Text>
+                            </View>
+                            <View style={{flex:1,justifyContent:'center'}}>
+                                <Image
+                                    style={{height:40,width:80,alignSelf:'center'}}
+                                    source={{uri:this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[1].entranceImgUrl}}
+                                    resizeMode={Image.resizeMode.stretch}
+                                />
+                            </View>
+
                         </View>
-                    </View>
-                    <View style={{flex:1,flexDirection:'row'}}>
-                        <View style={{flexDirection:'column',flex:1}}>
-                            <Text style={[styles.activityAre_right_main_title,{color:this.state.timeData===null? '#dddddd':this.state.timeData.data[0].resource.topicArea[0].maintitleColor}]}>
-                                {this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[1].mainTitle}
-                            </Text>
-                            <Text style={{color:'#666666',fontSize:11,marginLeft:15,marginTop:5}}>
-                                {this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[1].deputyTitle}
-                            </Text>
-                        </View>
-                        <View style={{flex:1,justifyContent:'center'}}>
-                            <Image
-                                style={{height:40,width:80,alignSelf:'center'}}
-                                source={{uri:this.state.timeData===null? '':this.state.timeData.data[0].resource.topicArea[1].entranceImgUrl}}
-                                resizeMode={Image.resizeMode.stretch}
-                            />
-                        </View>
-                    </View>
+                    </TouchableOpacity>
                 </View>
             </View>
         );
@@ -157,7 +167,7 @@ let styles = StyleSheet.create({
         borderWidth: 0.5,
         borderColor: '#d8d8d8',
         height:17,
-        width:119,
+        width:130,
         alignSelf:'center',
         flexDirection:'row',
         alignItems:'center'
@@ -194,12 +204,6 @@ let styles = StyleSheet.create({
         fontWeight:'500',
         marginLeft:15
     },
-    activityAre_right_sub_title:{
-
-    },
-    activityAre_right_image: {
-
-    }
 
 });
 export default LimitTime;
